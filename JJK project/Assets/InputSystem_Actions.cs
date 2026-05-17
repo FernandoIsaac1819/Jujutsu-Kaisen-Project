@@ -174,7 +174,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Innate power"",
+                    ""name"": ""Innate Technique"",
                     ""type"": ""Button"",
                     ""id"": ""641cd816-40e6-41b4-8c3d-04687c349290"",
                     ""expectedControlType"": """",
@@ -253,7 +253,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Innate power"",
+                    ""action"": ""Innate Technique"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -927,7 +927,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_LeftCharacter = m_Player.FindAction("Left Character", throwIfNotFound: true);
         m_Player_RightCharacter = m_Player.FindAction("Right Character", throwIfNotFound: true);
         m_Player_Reinforcement = m_Player.FindAction("Reinforcement", throwIfNotFound: true);
-        m_Player_Innatepower = m_Player.FindAction("Innate power", throwIfNotFound: true);
+        m_Player_InnateTechnique = m_Player.FindAction("Innate Technique", throwIfNotFound: true);
         m_Player_Guard = m_Player.FindAction("Guard", throwIfNotFound: true);
         m_Player_Detection = m_Player.FindAction("Detection", throwIfNotFound: true);
         // UI
@@ -1032,7 +1032,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_LeftCharacter;
     private readonly InputAction m_Player_RightCharacter;
     private readonly InputAction m_Player_Reinforcement;
-    private readonly InputAction m_Player_Innatepower;
+    private readonly InputAction m_Player_InnateTechnique;
     private readonly InputAction m_Player_Guard;
     private readonly InputAction m_Player_Detection;
     /// <summary>
@@ -1083,9 +1083,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Reinforcement => m_Wrapper.m_Player_Reinforcement;
         /// <summary>
-        /// Provides access to the underlying input action "Player/Innatepower".
+        /// Provides access to the underlying input action "Player/InnateTechnique".
         /// </summary>
-        public InputAction @Innatepower => m_Wrapper.m_Player_Innatepower;
+        public InputAction @InnateTechnique => m_Wrapper.m_Player_InnateTechnique;
         /// <summary>
         /// Provides access to the underlying input action "Player/Guard".
         /// </summary>
@@ -1147,9 +1147,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Reinforcement.started += instance.OnReinforcement;
             @Reinforcement.performed += instance.OnReinforcement;
             @Reinforcement.canceled += instance.OnReinforcement;
-            @Innatepower.started += instance.OnInnatepower;
-            @Innatepower.performed += instance.OnInnatepower;
-            @Innatepower.canceled += instance.OnInnatepower;
+            @InnateTechnique.started += instance.OnInnateTechnique;
+            @InnateTechnique.performed += instance.OnInnateTechnique;
+            @InnateTechnique.canceled += instance.OnInnateTechnique;
             @Guard.started += instance.OnGuard;
             @Guard.performed += instance.OnGuard;
             @Guard.canceled += instance.OnGuard;
@@ -1194,9 +1194,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Reinforcement.started -= instance.OnReinforcement;
             @Reinforcement.performed -= instance.OnReinforcement;
             @Reinforcement.canceled -= instance.OnReinforcement;
-            @Innatepower.started -= instance.OnInnatepower;
-            @Innatepower.performed -= instance.OnInnatepower;
-            @Innatepower.canceled -= instance.OnInnatepower;
+            @InnateTechnique.started -= instance.OnInnateTechnique;
+            @InnateTechnique.performed -= instance.OnInnateTechnique;
+            @InnateTechnique.canceled -= instance.OnInnateTechnique;
             @Guard.started -= instance.OnGuard;
             @Guard.performed -= instance.OnGuard;
             @Guard.canceled -= instance.OnGuard;
@@ -1567,12 +1567,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnReinforcement(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Innate power" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Innate Technique" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnInnatepower(InputAction.CallbackContext context);
+        void OnInnateTechnique(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Guard" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
