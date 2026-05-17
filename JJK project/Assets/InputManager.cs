@@ -1,37 +1,87 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    [SerializeField] private InputSystem_Actions inputActions;
+    public static InputManager Instance { get; private set; }
+    private InputSystem_Actions inputSystem;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private bool reinforcementActive;
+    public bool ReinforcementActive => reinforcementActive;
+
+    private bool abilityPrimed;
+    public bool AbilityPrimed => abilityPrimed;
+    public EventHandler onAbilityPrimed;
+    public float abilityPrimeDuration = 3f;
+
+    public EventHandler onAttackPressed;
+
+    private void Awake()
     {
-        if (inputActions == null)
+        if (Instance == null)
         {
-            inputActions = new InputSystem_Actions();
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            inputSystem = new InputSystem_Actions();
         }
-        inputActions.Enable();
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        // Read the Move action value
-        Vector3 moveInput = inputActions.Player.Move.ReadValue<Vector3>();
-        
-        // Log the Move input to console
-        if (moveInput != Vector3.zero)
-        {
-            Debug.Log($"Move Input: X={moveInput.x}, Y={moveInput.y}, Z={moveInput.z}");
-        }
+        if (inputSystem == null)
+            inputSystem = new InputSystem_Actions();
+
+        inputSystem.Player.Enable();
+        inputSystem.Player.Reinforcement.performed += OnReinforcementPerformed;
+        inputSystem.Player.Innatepower.performed += OnInnatePowerPressed;
+        inputSystem.Player.Attack.performed += OnAttackPressed;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
-        // Clean up input actions
-        inputActions?.Disable();
-        inputActions?.Dispose();
+        if (inputSystem == null) return;
+
+        inputSystem.Player.Reinforcement.performed -= OnReinforcementPerformed;
+        inputSystem.Player.Innatepower.performed -= OnInnatePowerPressed;
+        inputSystem.Player.Attack.performed -= OnAttackPressed;
+        inputSystem.Player.Disable();
+    }
+
+    private void OnAttackPressed(InputAction.CallbackContext context)
+    {
+        onAttackPressed?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void OnReinforcementPerformed(InputAction.CallbackContext context)
+    {
+        reinforcementActive = !reinforcementActive;
+    }
+
+    private void OnInnatePowerPressed(InputAction.CallbackContext context)
+    {
+        if (abilityPrimed)
+            return;
+
+        StartCoroutine(PrimeAbility(abilityPrimeDuration));
+    }
+
+    private IEnumerator PrimeAbility(float timer)
+    {
+        abilityPrimed = true;
+        onAbilityPrimed?.Invoke(this, EventArgs.Empty);
+        yield return new WaitForSeconds(timer);
+        abilityPrimed = false;
+    }
+
+    public Vector2 GetMoveInput() 
+    {
+        return inputSystem.Player.Move.ReadValue<Vector2>();
     }
 }
