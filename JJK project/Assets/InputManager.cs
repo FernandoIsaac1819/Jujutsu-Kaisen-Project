@@ -85,7 +85,6 @@ public class InputManager : MonoBehaviour
     private void OnDetectionPressed(InputAction.CallbackContext context)
         => onDetectionPressed?.Invoke(this, EventArgs.Empty);
     
-
     private void OnLeftCharacterPressed(InputAction.CallbackContext context)
         => onLeftCharacterPressed?.Invoke(this, EventArgs.Empty);
 

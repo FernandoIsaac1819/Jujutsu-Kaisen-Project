@@ -23,7 +23,10 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         playerAnimator = GetComponent<Animator>();
+    }
 
+    private void OnEnable()
+    {
         var manager = InputManager.Instance;
         if (manager == null)
         {
