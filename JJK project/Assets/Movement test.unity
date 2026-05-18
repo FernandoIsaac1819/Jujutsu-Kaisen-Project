@@ -3243,7 +3243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f879eac46358d74dabd356fc37bdd23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement
-  debugMode: 1
+  debugMode: 0
   playerAnimator: {fileID: 9198001269423459069}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -43,7 +43,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Dodge",
+                    "name": "Counter",
                     "type": "Button",
                     "id": "27c5f898-bc57-4ee1-8800-db469aca5fe3",
                     "expectedControlType": "",
@@ -109,6 +109,15 @@
                     "name": "Detection",
                     "type": "Button",
                     "id": "73bb78f1-fe24-4214-a269-cfb910b11c75",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "c66c8a9c-a326-4b3b-bd71-9f37e4e8fed4",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -222,7 +231,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Dodge",
+                    "action": "Counter",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -245,6 +254,17 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Detection",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dc1f488a-64f7-4c73-8a96-f9bc7bbfb0c5",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "MultiTap(tapTime=0.2,tapDelay=0.2,pressPoint=0.5)",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
