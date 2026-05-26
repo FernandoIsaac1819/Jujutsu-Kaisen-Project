@@ -43,16 +43,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Counter",
-                    "type": "Button",
-                    "id": "27c5f898-bc57-4ee1-8800-db469aca5fe3",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Jump",
+                    "name": "Dash/Jump",
                     "type": "Button",
                     "id": "f1ba0d36-48eb-4cd5-b651-1c94a6531f70",
                     "expectedControlType": "",
@@ -100,24 +91,6 @@
                     "name": "Guard",
                     "type": "Button",
                     "id": "fe2c1f5e-612d-4f14-9a48-45d2ce140bf1",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Detection",
-                    "type": "Button",
-                    "id": "73bb78f1-fe24-4214-a269-cfb910b11c75",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Dash",
-                    "type": "Button",
-                    "id": "c66c8a9c-a326-4b3b-bd71-9f37e4e8fed4",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -187,7 +160,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Jump",
+                    "action": "Dash/Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -226,45 +199,12 @@
                 },
                 {
                     "name": "",
-                    "id": "4f4649ac-64a8-4a73-af11-b3faef356a4d",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Counter",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "a5432549-4bc5-4a57-918f-d4c215abf20a",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Guard",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "02bf3102-0b01-49c8-bd5a-e0f8d360f0be",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Detection",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "dc1f488a-64f7-4c73-8a96-f9bc7bbfb0c5",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "MultiTap(tapTime=0.2,tapDelay=0.2,pressPoint=0.5)",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

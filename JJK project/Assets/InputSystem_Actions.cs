@@ -129,16 +129,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Counter"",
-                    ""type"": ""Button"",
-                    ""id"": ""27c5f898-bc57-4ee1-8800-db469aca5fe3"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Jump"",
+                    ""name"": ""Dash/Jump"",
                     ""type"": ""Button"",
                     ""id"": ""f1ba0d36-48eb-4cd5-b651-1c94a6531f70"",
                     ""expectedControlType"": """",
@@ -186,24 +177,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""name"": ""Guard"",
                     ""type"": ""Button"",
                     ""id"": ""fe2c1f5e-612d-4f14-9a48-45d2ce140bf1"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Detection"",
-                    ""type"": ""Button"",
-                    ""id"": ""73bb78f1-fe24-4214-a269-cfb910b11c75"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Dash"",
-                    ""type"": ""Button"",
-                    ""id"": ""c66c8a9c-a326-4b3b-bd71-9f37e4e8fed4"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -273,7 +246,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Jump"",
+                    ""action"": ""Dash/Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -312,45 +285,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""4f4649ac-64a8-4a73-af11-b3faef356a4d"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Counter"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""a5432549-4bc5-4a57-918f-d4c215abf20a"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
                     ""action"": ""Guard"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""02bf3102-0b01-49c8-bd5a-e0f8d360f0be"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""Detection"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""dc1f488a-64f7-4c73-8a96-f9bc7bbfb0c5"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": ""MultiTap(tapTime=0.2,tapDelay=0.2,pressPoint=0.5)"",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -942,15 +882,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Heavyattack = m_Player.FindAction("Heavy attack", throwIfNotFound: true);
-        m_Player_Counter = m_Player.FindAction("Counter", throwIfNotFound: true);
-        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        m_Player_DashJump = m_Player.FindAction("Dash/Jump", throwIfNotFound: true);
         m_Player_LeftCharacter = m_Player.FindAction("Left Character", throwIfNotFound: true);
         m_Player_RightCharacter = m_Player.FindAction("Right Character", throwIfNotFound: true);
         m_Player_Reinforcement = m_Player.FindAction("Reinforcement", throwIfNotFound: true);
         m_Player_InnateTechnique = m_Player.FindAction("Innate Technique", throwIfNotFound: true);
         m_Player_Guard = m_Player.FindAction("Guard", throwIfNotFound: true);
-        m_Player_Detection = m_Player.FindAction("Detection", throwIfNotFound: true);
-        m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1048,15 +985,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Heavyattack;
-    private readonly InputAction m_Player_Counter;
-    private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_DashJump;
     private readonly InputAction m_Player_LeftCharacter;
     private readonly InputAction m_Player_RightCharacter;
     private readonly InputAction m_Player_Reinforcement;
     private readonly InputAction m_Player_InnateTechnique;
     private readonly InputAction m_Player_Guard;
-    private readonly InputAction m_Player_Detection;
-    private readonly InputAction m_Player_Dash;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1085,13 +1019,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Heavyattack => m_Wrapper.m_Player_Heavyattack;
         /// <summary>
-        /// Provides access to the underlying input action "Player/Counter".
+        /// Provides access to the underlying input action "Player/DashJump".
         /// </summary>
-        public InputAction @Counter => m_Wrapper.m_Player_Counter;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/Jump".
-        /// </summary>
-        public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        public InputAction @DashJump => m_Wrapper.m_Player_DashJump;
         /// <summary>
         /// Provides access to the underlying input action "Player/LeftCharacter".
         /// </summary>
@@ -1112,14 +1042,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Guard".
         /// </summary>
         public InputAction @Guard => m_Wrapper.m_Player_Guard;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/Detection".
-        /// </summary>
-        public InputAction @Detection => m_Wrapper.m_Player_Detection;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/Dash".
-        /// </summary>
-        public InputAction @Dash => m_Wrapper.m_Player_Dash;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1158,12 +1080,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Heavyattack.started += instance.OnHeavyattack;
             @Heavyattack.performed += instance.OnHeavyattack;
             @Heavyattack.canceled += instance.OnHeavyattack;
-            @Counter.started += instance.OnCounter;
-            @Counter.performed += instance.OnCounter;
-            @Counter.canceled += instance.OnCounter;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
+            @DashJump.started += instance.OnDashJump;
+            @DashJump.performed += instance.OnDashJump;
+            @DashJump.canceled += instance.OnDashJump;
             @LeftCharacter.started += instance.OnLeftCharacter;
             @LeftCharacter.performed += instance.OnLeftCharacter;
             @LeftCharacter.canceled += instance.OnLeftCharacter;
@@ -1179,12 +1098,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Guard.started += instance.OnGuard;
             @Guard.performed += instance.OnGuard;
             @Guard.canceled += instance.OnGuard;
-            @Detection.started += instance.OnDetection;
-            @Detection.performed += instance.OnDetection;
-            @Detection.canceled += instance.OnDetection;
-            @Dash.started += instance.OnDash;
-            @Dash.performed += instance.OnDash;
-            @Dash.canceled += instance.OnDash;
         }
 
         /// <summary>
@@ -1208,12 +1121,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Heavyattack.started -= instance.OnHeavyattack;
             @Heavyattack.performed -= instance.OnHeavyattack;
             @Heavyattack.canceled -= instance.OnHeavyattack;
-            @Counter.started -= instance.OnCounter;
-            @Counter.performed -= instance.OnCounter;
-            @Counter.canceled -= instance.OnCounter;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
+            @DashJump.started -= instance.OnDashJump;
+            @DashJump.performed -= instance.OnDashJump;
+            @DashJump.canceled -= instance.OnDashJump;
             @LeftCharacter.started -= instance.OnLeftCharacter;
             @LeftCharacter.performed -= instance.OnLeftCharacter;
             @LeftCharacter.canceled -= instance.OnLeftCharacter;
@@ -1229,12 +1139,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Guard.started -= instance.OnGuard;
             @Guard.performed -= instance.OnGuard;
             @Guard.canceled -= instance.OnGuard;
-            @Detection.started -= instance.OnDetection;
-            @Detection.performed -= instance.OnDetection;
-            @Detection.canceled -= instance.OnDetection;
-            @Dash.started -= instance.OnDash;
-            @Dash.performed -= instance.OnDash;
-            @Dash.canceled -= instance.OnDash;
         }
 
         /// <summary>
@@ -1564,19 +1468,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnHeavyattack(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Counter" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Dash/Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnCounter(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnJump(InputAction.CallbackContext context);
+        void OnDashJump(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Left Character" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -1612,20 +1509,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnGuard(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Detection" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnDetection(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Dash" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnDash(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
